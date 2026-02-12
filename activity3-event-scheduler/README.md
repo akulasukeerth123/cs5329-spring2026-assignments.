@@ -1,4 +1,4 @@
-# Activity 3 – Event
+# Activity 3 – Event_Scheduler
 
 **Course:** CS 5329 – Algorithm Design and Analysis  
 **Student Name:** Akula Sukeerth Net ID (xob17)

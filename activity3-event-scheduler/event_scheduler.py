@@ -1,4 +1,3 @@
-# event_scheduler.py
 import heapq
 
 def create_scheduler():
@@ -12,7 +11,6 @@ def add_event(heap, current_version, event_id, priority, created_time, payload):
     Each heap entry is a tuple:
     (priority, created_time, version, event_id, payload)
     """
-    # Increment the version for this event_id
     version = current_version.get(event_id, 0) + 1
     current_version[event_id] = version
 
@@ -28,7 +26,6 @@ def discard_stale_top(heap, current_version):
         priority, created_time, version, event_id, payload = heap[0]
         latest = current_version.get(event_id)
 
-        # Cancelled (missing) or outdated (version mismatch)
         if latest is None or version != latest:
             heapq.heappop(heap)
         else:
