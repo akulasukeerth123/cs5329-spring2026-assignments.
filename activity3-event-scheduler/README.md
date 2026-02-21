@@ -6,6 +6,8 @@
 
 ---
 
-## Week 1 Reflection
+## Week 2 Event Scheduling with Heaps
 
-A heap works better than a regular list for this scheduler because it always keeps the most urgent event ready at the top without needing to sort the entire structure every time. If I used a list, I would have to scan or re-sort it repeatedly to figure out which request should be handled next, which becomes inefficient as more events are added. In this system, the operation that happens most often is selecting and removing the next highest-priority event. Using a heap makes that process fast and scalable, which is important in real event-driven systems.
+In this scheduler, the operations that dominate runtime are the heap insertions and removals (heappush and heappop). Each of these operations runs in O(log n) time, which keeps the system efficient even as the number of events grows. If we used a simple list instead and scanned it every time to find the highest-priority event, that would take O(n) per operation and become slow for large workloads.
+
+Lazy updating is used because Python’s heap does not support efficient in-place updates. Instead of modifying an existing entry, we insert a new version and allow outdated entries to remain in the heap. These stale entries are safely ignored later by checking versions before processing. In practice, this approach is widely used because it keeps the implementation simple while maintaining good performance.
