@@ -1,0 +1,4 @@
+Dataset Size,Baseline Runtime (s),Heap Runtime (s),Baseline Memory (MB),Heap Memory (MB),Speedup
+10k,0.001854,0.00068,0.229,0.0003,2.73
+50k,0.005784,0.002065,1.1444,0.0003,2.8
+100k,0.012792,0.003801,2.2886,0.0003,3.37

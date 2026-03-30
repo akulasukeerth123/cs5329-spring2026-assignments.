@@ -1,8 +1,10 @@
-# Baseline Implementation
-# Algorithm: Full Sorting
-# Description:
-# This approach sorts the entire dataset based on engagement scores
-# and then selects the Top-K entries from the sorted list.
-#
-# Time Complexity: O(n log n)
-# Space Complexity: O(n)
+def get_top_k_baseline(data, k):
+    """
+    Baseline approach using full sorting
+    Time: O(n log n)
+    """
+    # Sort entire dataset by score (descending)
+    sorted_data = sorted(data, key=lambda x: x['score'], reverse=True)
+
+    # Return top K elements
+    return sorted_data[:k]

@@ -1,141 +1,156 @@
-# CS 5329 – Midterm Project Proposal
+# Real-Time Leaderboard Ranking Using Heap Structures
 
-**Student Name:** Shivani Guda, Sukeerth Akula
-**NetID:** epb44, xob17
+Student: Sukeerth Akula , Shivani Guda 
+Course: CS 5329 – Algorithm Design and Analysis  
+Semester: Spring 2026  
 
-**Project Title:** Real-Time Leaderboard Ranking Using Heap Structures
+---
 
+## Leaderboard Ranking Algorithm Comparison
 
+### Project Overview  
+This project evaluates two different approaches for solving the Top-K ranking problem in large datasets. The goal is to compare a simple baseline sorting algorithm with a more advanced optimized algorithm using a min-heap (priority queue). The system processes synthetic datasets of up to 100,000+ records and measures both runtime performance and memory usage. This project simulates real-world systems like YouTube trending, gaming leaderboards, and recommendation engines.
 
-# 1. Problem Statement
+---
 
-### Input
+## Algorithms Implemented  
 
-The input for this project will be a dataset representing a leaderboard of videos or users with engagement scores. Each record will contain fields such as video ID (or player ID), number of views, likes, comments, and an overall engagement score. The dataset will be stored in **CSV format** and initially contain around **100,000 records**. Larger datasets of **500,000 to 1,000,000 records** may also be generated to evaluate performance at scale.
+### 1. Baseline Full Sorting  
+The baseline approach sorts the entire dataset based on an engagement score and selects the top K elements.  
 
-The data will be loaded from a file and processed by the algorithm to maintain a ranking of the top-performing entries.
+Score Formula:  
+score = views + 2 * likes + 3 * comment_count  
 
+Complexity:  
+Time Complexity: O(n log n)  
+Space Complexity: O(n)  
 
+Advantages:  
+Simple implementation  
+Works well for small datasets  
 
-### Output
+Limitations:  
+Requires sorting the entire dataset  
+Not suitable for large-scale or real-time systems  
 
-The program will return the **Top K ranked entries** (for example Top 50 videos or players) based on their engagement score.
+---
 
-A correct result means both the baseline algorithm and the optimized algorithm return the **same Top K ranked results** for the same dataset.
+### 2. Optimized Min-Heap Approach  
+The optimized algorithm uses a min-heap of size K to track only the top K elements while scanning the dataset. This allows efficient ranking without sorting the entire dataset.  
 
+Data Structures Used:  
+Min-Heap (priority queue)  
 
-### Constraints
+Complexity:  
+Time Complexity: O(n log k)  
+Space Complexity: O(k)  
 
-The main objective of the project is to support **fast ranking updates on large datasets**.
+Advantages:  
+Efficient for Top-K queries  
+Faster for large datasets  
+Low memory usage  
+Suitable for real-time systems  
 
-Performance goals include:
+Trade-off:  
+Slightly more complex implementation  
 
-* Efficient ranking updates even with **hundreds of thousands of records**
-* Query time ideally **less than 10 milliseconds**
-* Memory usage should remain **below 512 MB**
+---
 
-The optimized algorithm should significantly outperform the baseline approach as the dataset size increases.
+## Dataset  
 
+The project uses a synthetic dataset generated using Python.  
 
+Fields included:  
+title  
+views  
+likes  
+comment_count  
 
-# 2. Motivation
+Dataset sizes tested:  
+10,000  
+50,000  
+100,000 records  
 
-Real-world systems such as YouTube Trending pages, gaming leaderboards, and social media ranking systems must constantly identify the most popular items from millions of entries. If a naive algorithm sorts the entire dataset each time engagement changes, the system would waste large amounts of computation time and resources. Using a heap structure allows the system to focus only on the **top results**, which significantly improves efficiency and scalability.
+---
 
+## Performance Evaluation  
 
+Benchmark experiments were conducted using:  
+time.perf_counter() for runtime measurement  
+tracemalloc for memory usage evaluation  
 
-# 3. Candidate Approaches
+---
 
-## Approach A: Baseline
+## Runtime Results  
 
-### Algorithm/Data Structure
+Dataset Size    Baseline Runtime    Optimized Runtime  
+10k             0.001854            0.000680  
+50k             0.005784            0.002065  
+100k            0.012792            0.003801  
 
-Full Sorting of the Dataset
+---
 
-### Description
+## Memory Usage  
 
-The baseline approach will sort the entire dataset based on engagement scores every time the leaderboard needs to be updated. After sorting all records, the system will select the **Top K entries** from the sorted list.
+Dataset Size    Baseline Memory     Optimized Memory  
+10k             0.2290	            0.0003 
+50k             1.1444	            0.0003 
+100k            2.2886 	            0.0003
 
-### Theoretical Complexity
+---  
 
-**Time Complexity:**
-O(n log n)
+## Performance Visualization  
 
-**Space Complexity:**
-O(n)
+results/performance_graph.png  
 
-Where **n** represents the total number of records.
+This graph shows how the heap-based approach scales better than sorting as dataset size increases.  
 
+---
 
+## How to Run the Project  
 
-## Approach B: Optimized
+Navigate to the project directory and run:  
 
-### Algorithm/Data Structure
+Generate Dataset  
+python src/generate_large_dataset.py  
 
-Min-Heap (Priority Queue)
+Run Benchmark  
+python src/benchmark.py  
 
-### Description
+---
 
-The optimized approach will maintain a **Min-Heap of size K** that stores only the Top K entries. As the algorithm processes the dataset, each new score will be compared with the smallest element in the heap.
+## Project Structure  
 
-If the new score is larger than the smallest element, it replaces that element and the heap reorganizes itself. This allows the system to maintain the Top K items without sorting the entire dataset.
+leaderboard-ranking-project  
 
-### Theoretical Complexity
+src  
+baseline_sorting.py  
+heap_leaderboard.py  
+evaluation.py  
+benchmark.py  
+generate_large_dataset.py  
 
-**Time Complexity:**
-O(n log k)
+data  
+sample_leaderboard_dataset.csv  
+dataset_*.csv  
 
-**Space Complexity:**
-O(k)
+results  
+performance_graph.png  
 
-Where **k** represents the number of top entries being tracked.
+README.md  
 
+---
 
+## Key Takeaways  
 
-# 4. Evaluation Plan
+The baseline sorting algorithm works well for small datasets but becomes inefficient as data grows.  
+The heap-based approach significantly improves performance by focusing only on the top K elements.  
+Memory usage is reduced since only K elements are stored.  
+The optimized approach is ideal for real-time ranking systems.  
 
-### Runtime
+---
 
-Execution time will be measured using Python's **time.perf_counter()** function. The runtime of the baseline sorting approach and the heap-based approach will be compared across datasets of different sizes.
+## Author  
 
-
-
-### Memory
-
-Memory usage will be measured using Python's **tracemalloc** module to observe how much memory each algorithm consumes during execution.
-
-
-
-### Correctness
-
-Correctness will be verified by comparing the Top K results from the optimized algorithm against the results from the baseline sorting approach.
-
-
-
-### Dataset Realism
-
-The algorithms will be tested using different types of datasets including:
-
-* Randomly generated scores
-* Sorted datasets
-* Realistic engagement distributions
-
-This will help analyze how each algorithm performs under different input conditions.
-
-
-
-# 5. Dataset Plan
-
-### Source
-
-The dataset will be obtained from Kaggle:
-
-**YouTube Trending Video Statistics Dataset**
-[https://www.kaggle.com/datasets/datasnaek/youtube-new](https://www.kaggle.com/datasets/datasnaek/youtube-new)
-
-
-
-### Generation / Acquisition
-
-The dataset will be downloaded in **CSV format** from Kaggle. Additional larger datasets may be generated using Python to simulate datasets with **100,000, 500,000, and 1,000,000 records** in order to test algorithm performance at different scales.
-
+Sukeerth Akula & Shivani Guda 
+CS 5329 – Algorithm Design and Analysis  
