@@ -4,9 +4,9 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 
-from baseline_sorting import get_top_k_baseline
-from heap_leaderboard import get_top_k_heap
-from evaluation import measure_performance, check_correctness
+from src.baseline_sorting import get_top_k_baseline
+from src.heap_leaderboard import get_top_k_heap
+from src.evaluation import measure_performance, check_correctness
 
 
 def load_data(csv_file):

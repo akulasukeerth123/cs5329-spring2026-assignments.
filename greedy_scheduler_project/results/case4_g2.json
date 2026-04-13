@@ -1,0 +1,17 @@
+{
+  "strategy_name": "weight_to_resource_ratio",
+  "selected_tasks": [
+    0
+  ],
+  "total_weight": 18.0,
+  "execution_time_seconds": 2e-05,
+  "utilization_timeline": {
+    "0-10": {
+      "resource_used": 1,
+      "categories": {
+        "compute": 1
+      }
+    }
+  },
+  "schedule_valid": true
+}

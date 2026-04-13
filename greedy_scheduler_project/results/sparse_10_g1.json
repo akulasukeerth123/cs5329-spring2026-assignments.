@@ -1,0 +1,80 @@
+{
+  "strategy_name": "earliest_finish_resource_aware",
+  "selected_tasks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "total_weight": 189.19,
+  "execution_time_seconds": 8.8e-05,
+  "utilization_timeline": {
+    "0-3": {
+      "resource_used": 2,
+      "categories": {
+        "compute": 1
+      }
+    },
+    "4-5": {
+      "resource_used": 3,
+      "categories": {
+        "network": 1
+      }
+    },
+    "6-9": {
+      "resource_used": 1,
+      "categories": {
+        "compute": 1
+      }
+    },
+    "10-11": {
+      "resource_used": 3,
+      "categories": {
+        "compute": 1
+      }
+    },
+    "12-15": {
+      "resource_used": 3,
+      "categories": {
+        "network": 1
+      }
+    },
+    "16-18": {
+      "resource_used": 2,
+      "categories": {
+        "compute": 1
+      }
+    },
+    "19-20": {
+      "resource_used": 1,
+      "categories": {
+        "compute": 1
+      }
+    },
+    "22-24": {
+      "resource_used": 1,
+      "categories": {
+        "io": 1
+      }
+    },
+    "25-27": {
+      "resource_used": 3,
+      "categories": {
+        "io": 1
+      }
+    },
+    "29-32": {
+      "resource_used": 2,
+      "categories": {
+        "compute": 1
+      }
+    }
+  },
+  "schedule_valid": true
+}

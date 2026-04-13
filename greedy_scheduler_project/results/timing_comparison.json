@@ -1,0 +1,32 @@
+[
+  {
+    "input_size": 10,
+    "earliest_finish_resource_aware_seconds": 0.027504,
+    "weight_to_resource_ratio_seconds": 0.028208,
+    "bruteforce_seconds": 0.034603
+  },
+  {
+    "input_size": 50,
+    "earliest_finish_resource_aware_seconds": 0.030711,
+    "weight_to_resource_ratio_seconds": 0.031726,
+    "bruteforce_seconds": "N/A (n > 15)"
+  },
+  {
+    "input_size": 100,
+    "earliest_finish_resource_aware_seconds": 0.038727,
+    "weight_to_resource_ratio_seconds": 0.03767,
+    "bruteforce_seconds": "N/A (n > 15)"
+  },
+  {
+    "input_size": 500,
+    "earliest_finish_resource_aware_seconds": 0.121646,
+    "weight_to_resource_ratio_seconds": 0.11953,
+    "bruteforce_seconds": "N/A (n > 15)"
+  },
+  {
+    "input_size": 1000,
+    "earliest_finish_resource_aware_seconds": 0.320264,
+    "weight_to_resource_ratio_seconds": 0.273838,
+    "bruteforce_seconds": "N/A (n > 15)"
+  }
+]
